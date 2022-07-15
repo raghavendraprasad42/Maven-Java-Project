@@ -7,7 +7,7 @@
 
   <groupId>com.example</groupId>
   <artifactId>java-maven</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.5-SNOPSHOT</version>
   <packaging>war</packaging>
 
   <properties>
