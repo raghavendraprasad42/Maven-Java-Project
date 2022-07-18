@@ -20,11 +20,11 @@ ipipeline {
 		echo 'pre deployment testing'
 	        sh "mvn clean test"
 	    }
-	    post {
-	        success {
+	    post{
+	        success{
 		  junit '**/target/surefire-reports/*.xml'
 		 }
-            } 					
+             } 					
         }
 	    stage('packaging application') {
 		     steps {
