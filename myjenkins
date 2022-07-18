@@ -1,0 +1,34 @@
+pipeline {
+ agent {
+       label 'build-server'
+      }
+ stages {
+        stage('compile src code') {
+            steps {
+                echo 'compile src code'
+            }
+        }
+        stage('pre deployment testing') {
+            steps {
+			    echo 'pre deployment testing'
+			}			
+        }
+	    stage('packaging application') {
+		     steps {
+			    echo 'packaging application'
+			 }
+		
+		}
+		stage('deploy to server')  {
+		     steps {
+			   echo 'deploy to server'
+		     }
+		}
+		stage('post deployment testing') { 
+		     steps {
+			   echo 'post deployment testing'
+		     }
+		
+		}
+	}
+ }
