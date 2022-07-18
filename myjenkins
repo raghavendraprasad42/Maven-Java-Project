@@ -36,14 +36,16 @@ pipeline {
 		}		    
 		
 	}
-		stage('deploy to server')  {
-		     steps {
-			   echo 'deploy to server'
+        stage('deploy to server')  {
+	     steps {
+		  echo 'deploy to server'
+		  deploy adapters: [tomcat9(credentialsId: 'staging-server', path: '', url: 'http://3.250.197.122:9000/')], contextPath: 'webapp', war: 'target/*.war'
 		     }
 		}
-		stage('post deployment testing') { 
-		     steps {
-			   echo 'post deployment testing'
+	stage('post deployment testing') { 
+	     steps {
+	          echo 'post deployment testing'
+		   sh "mvn clean verify"
 		     }
 		
 		}
