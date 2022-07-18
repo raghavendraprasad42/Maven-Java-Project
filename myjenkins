@@ -1,29 +1,32 @@
-ipipeline {
+pipeline {
  agent {
-       label 'build-server'
-      }
+       label 'build-server' 
+	   }     
  tools {
      maven "maven3"
- }
-
+ } 	   
  stages {
         stage('compile src code') {
             steps {
                 echo 'compile src code'
-		git credentialsId: 'prava', url: 'https://github.com/raghavendraprasad42/Maven-Java-Project.git'
-	
-	        sh "mvn clean compile"
+				git credentialsId: 'prava', url: 'https://github.com/raghavendraprasad42/Maven-Java-Project.git'
+				sh "mvn clean compile"
             }
         }
         stage('pre deployment testing') {
             steps {
-		echo 'pre deployment testing'
-	    }
-	     					
+			    echo 'pre deployment testing'
+				sh "mvn clean test"
+			}	
+	    post{
+	      success{
+		junit '**/target/surefire-reports/*.xml'
+			}
+	    }			
         }
 	    stage('packaging application') {
 		     steps {
-			    echo 'packaging application'
+			    echo  'packaging application'
 			 }
 		
 		}
