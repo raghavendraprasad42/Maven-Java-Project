@@ -1,4 +1,4 @@
-pipeline {
+ipipeline {
  agent {
        label 'build-server'
       }
@@ -17,8 +17,14 @@ pipeline {
         }
         stage('pre deployment testing') {
             steps {
-			    echo 'pre deployment testing'
-			}			
+		echo 'pre deployment testing'
+	        sh "mvn clean test"
+		}
+	    post {
+	      success{
+	        junit '**/target/surefire-reports/*.xml'
+		}
+            }				
         }
 	    stage('packaging application') {
 		     steps {
