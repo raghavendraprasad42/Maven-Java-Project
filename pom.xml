@@ -131,12 +131,12 @@
     <snapshotRepository>
       <id>deployment</id>
       <name>my snapshot repository</name>
-      <url>http://54.229.20.32:8081/repository/maven-snapshots/</url>
+      <url>http://54.228.50.111:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
     <repository>
       <id>deployment</id>
       <name>my repository</name>
-      <url>http://54.229.20.32:8081/repository/maven-releases/</url>
+      <url>http://54.228.50.111:8081/repository/maven-releases/</url>
     </repository>
   </distributionManagement>
 </project>
