@@ -21,9 +21,9 @@ ipipeline {
 	        sh "mvn clean test"
 	    }
 	    post{
-	        success{
+	        
 		  junit '**/target/surefire-reports/*.xml'
-		 }
+		
              } 					
         }
 	    stage('packaging application') {
