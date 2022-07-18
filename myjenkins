@@ -24,12 +24,18 @@ pipeline {
 			}
 	    }			
         }
-	    stage('packaging application') {
-		     steps {
-			    echo  'packaging application'
+	stage('packaging application') {
+	    steps {
+		  echo  'packaging application'
+		  sh "mvn clean package"
 			 }
+	    post{
+	      success{
+		   archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+			 }
+		}		    
 		
-		}
+	}
 		stage('deploy to server')  {
 		     steps {
 			   echo 'deploy to server'
